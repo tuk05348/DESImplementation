@@ -12,13 +12,15 @@ int main(int argc, char* argv[]){
 void key_gen(){
     unsigned char bytes[8];
     unsigned char mask = 1;
-    unsigned char key[8];
+    unsigned char key[64];
     randombytes_buf(bytes, 8);
-
-    for (int i=0; i<8; i++){
-        key[i] = (bytes[0] >> i) & mask;
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            key[(i*8) + j] = (bytes[i] >> j) & mask;
+        }
     }
-    for (int i = 0; i < 8; i++) {
+
+    for(int i=0; i<64; i++){
         printf("%d", key[i]);
     }
     printf("\n");
