@@ -5,6 +5,7 @@
 void key_gen(unsigned char* key);
 void print_key(unsigned char* key, int key_len);
 void subkey_gen(unsigned char* subkey, unsigned char* key);
+void left_shift(int n, int len, unsigned char* orig, unsigned char* res);
 
 int main(int argc, char* argv[]){
     unsigned char key[64];
@@ -13,6 +14,11 @@ int main(int argc, char* argv[]){
     unsigned char subkey[56];
     subkey_gen(subkey, key);
     print_key(subkey, 56);
+    unsigned char t[] = {1, 0, 0, 0};
+    unsigned char s[4];
+    left_shift(1, 4, t, s);
+    print_key(t, 4);
+    print_key(s, 4);
     return 0;
 }
 
@@ -41,4 +47,13 @@ void subkey_gen(unsigned char* subkey, unsigned char* key){
         subkey[i] = key[PC1[i]];
     }
 
+}
+
+void left_shift(int n, int len, unsigned char* orig, unsigned char* res){
+    for(int i=n; i<len-1; i++){
+        res[i-n] = orig[i];
+    }
+    for(int i=0; i<n; i++){
+        res[len-n+i] = orig[i];
+    }
 }
