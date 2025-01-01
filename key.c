@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
     print_key(subkey, 56);
     unsigned char t[] = {1, 0, 0, 0};
     unsigned char s[4];
-    left_shift(1, 4, t, s);
+    left_shift(7, 4, t, s);
     print_key(t, 4);
     print_key(s, 4);
     return 0;
@@ -50,6 +50,10 @@ void subkey_gen(unsigned char* subkey, unsigned char* key){
 }
 
 void left_shift(int n, int len, unsigned char* orig, unsigned char* res){
+    if(n > len){
+        n %= len;
+    }
+
     for(int i=n; i<len-1; i++){
         res[i-n] = orig[i];
     }
