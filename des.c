@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.>
+#include <stdlib.h>
 #include "key.h"
 
 int main(int argc, char *argv[]){
@@ -11,6 +11,6 @@ int main(int argc, char *argv[]){
     print_key(subkey, 56);
     unsigned char  subkey_1[56];
     left_shift(1, 56, subkey, subkey_1);
-    print_key(subkey_1);
+    print_key(subkey_1, 56);
     return 0;
 }
