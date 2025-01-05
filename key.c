@@ -42,8 +42,8 @@ void left_shift(int n, int len, unsigned char* orig, unsigned char* res){
 	}
 }
 
-void copy_arr(int len, unsigned char* src, unsigned char* dest){
-	for(int i=0; i<len; i++){
-		dest[i] = src[i];
+void copy_arr(int n, int d, unsigned char* src, unsigned char* dest){
+	for(int i=d; i<n+d; i++){
+		dest[i-d] = src[i];
 	}
 }
