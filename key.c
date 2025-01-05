@@ -34,10 +34,10 @@ void left_shift(int n, int len, unsigned char* orig, unsigned char* res){
         n %= len;
     }
 
-    for(int i=n; i<len-1; i++){
-        res[i-n] = orig[i];
-    }
-    for(int i=0; i<n; i++){
-        res[len-n+i] = orig[i];
-    }
+    for(int i=0; i<len-n; i++){
+		res[i] = orig[i+n];
+	}
+	for(int i=0; i<n; i++){
+		res[len-n+i] = orig[i];
+	}
 }
